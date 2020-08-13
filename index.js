@@ -1,7 +1,7 @@
 var express =  require("express");
 var expressWebSocket = require("express-ws");
 var ffmpeg = require("fluent-ffmpeg");
-ffmpeg.setFfmpegPath("D:/工具/ffmpeg-20191126-59d264b-win64-static/bin/ffmpeg");
+ffmpeg.setFfmpegPath("/Applications/A-software/ffmpeg-4.2.2-macos64-static/bin/ffmpeg");
 var webSocketStream = require("websocket-stream/stream");
 var WebSocket = require("websocket-stream");
 var http = require("http");
@@ -23,7 +23,7 @@ function rtspRequestHandle(ws, req) {
     }, {
         browserBufferTimeout: 1000000
     });
-    let url = req.query.url;
+    let url = req.query.url+ '?streamform=rtp&standard=rtsp';
     console.log("rtsp url:", url);
     console.log("rtsp params:", req.params);
     try {
